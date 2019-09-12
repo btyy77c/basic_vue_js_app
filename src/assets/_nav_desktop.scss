@@ -1,0 +1,11 @@
+nav {
+  @media (min-width: 700px) {
+    i {
+      display: none;
+    }
+
+    .logo {
+      width: auto;
+    }
+  }
+}

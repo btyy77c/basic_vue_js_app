@@ -5,62 +5,49 @@
       <span>Relief</span>
     </div>
 
-    <div class="links">
+    <i
+      @click="displayLinks = !displayLinks"
+      class="material-icons icon-image-preview"
+    >
+      menu
+    </i>
+
+    <div :class="[displayLinks ? 'display' : 'hidden', 'links']">
       <router-link to="/">Donate</router-link>
       <router-link to="/faq">FAQ</router-link>
       <router-link to="/contact">Contact</router-link>
     </div>
-
-    <i class="material-icons icon-image-preview">menu</i>
   </nav>
 </template>
 
 <style scoped lang="scss">
-$blue: #00788c;
-$yellow: #ffc827;
+@import "../assets/nav";
+@import "../assets/nav_desktop";
 
-nav {
-  background-color: $blue;
-  color: #fff;
-  display: flex;
-}
+/*
 
 a {
   align-items: center;
-  color: #fff;
   display: flex;
   height: 100%;
   padding: 0 10px;
-  text-decoration: none;
-
-  &:hover {
-    background-color: darken($blue, 1%);
-  }
 }
 
 .links {
   align-items: center;
-  display: flex;
   flex-grow: 1;
   justify-content: flex-end;
 }
-
-.logo {
-  align-items: center;
-  background-color: $yellow;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 15px;
-  text-align: center;
-  width: 70vw;
-
-  @media (min-width: 700px) {
-    width: auto;
-  }
-}
-
-.router-link-exact-active {
-  color: $yellow;
-}
+*/
 </style>
+
+<script>
+export default {
+  name: "nav",
+  data() {
+    return {
+      displayLinks: false
+    };
+  }
+};
+</script>

@@ -1,0 +1,59 @@
+$black: #000;
+$blue: #00788c;
+$yellow: #ffc827;
+$white: #fff;
+
+nav {
+  background-color: $blue;
+  display: flex;
+  position: relative;
+
+  a {
+    color: $white;
+    padding: 15px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken($blue, 1%);
+    }
+  }
+
+  i {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    font-size: 2em;
+    justify-content: flex-end;
+    margin: 15px;
+  }
+
+  .links {
+    background-color: $blue;
+    bottom: -144px;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    position: absolute;
+    right: 0;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .logo {
+    align-items: center;
+    background-color: $yellow;
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    text-align: center;
+    width: 70vw;
+  }
+
+  .router-link-exact-active {
+    color: $yellow;
+  }
+}

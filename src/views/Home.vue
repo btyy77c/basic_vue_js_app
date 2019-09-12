@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <section class="home">
     <h3>Donate Now</h3>
-  </div>
+  </section>
 </template>
 
 <script>

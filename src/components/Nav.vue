@@ -6,11 +6,9 @@
     </div>
 
     <div class="links">
-      <p>Donate</p>
-      <p>FAQ</p>
-      <p>Contact</p>
-      <router-link to="/">Donate</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Donate</router-link>
+      <router-link to="/faq">FAQ</router-link>
+      <router-link to="/contact">Contact</router-link>
     </div>
   </nav>
 </template>

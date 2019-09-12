@@ -10,6 +10,8 @@
       <router-link to="/faq">FAQ</router-link>
       <router-link to="/contact">Contact</router-link>
     </div>
+
+    <i class="material-icons icon-image-preview">menu</i>
   </nav>
 </template>
 
@@ -49,7 +51,8 @@ a {
   color: #000;
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
+  padding: 20px 15px;
+  text-align: center;
   width: 70vw;
 
   @media (min-width: 700px) {

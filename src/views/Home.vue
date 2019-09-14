@@ -2,6 +2,8 @@
   <section id="home">
     <h3>Donate Now</h3>
 
+    <PaymentForm />
+
     <div class="fake-stripe-form">
       <input
         v-model="amount"
@@ -37,8 +39,15 @@ section {
 </style>
 
 <script>
+// @ is an alias to /src
+import PaymentForm from "@/components/PaymentForm.vue";
+
 export default {
   name: "home",
+
+  components: {
+    PaymentForm
+  },
 
   computed: {
     validAmount() {
@@ -91,8 +100,14 @@ export default {
     },
 
     fakeStripeToken() {
-      let payAmount = this.amount;
-      return payAmount;
+      this.stripe.createToken(this.card).then(result => {
+        this.cardProcessing = false;
+        if (result.error) {
+          this.cardErrors = result.error.message;
+        } else {
+          this.cardErrors = "Thank you for your payment";
+        }
+      });
     },
 
     filterAmount() {

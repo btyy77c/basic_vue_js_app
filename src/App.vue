@@ -7,8 +7,10 @@
 
 <style lang="scss">
 @import "~material-design-icons/iconfont/material-icons.css";
+@import "./assets/colors";
 
 body {
+  background-color: lighten($black, 85%);
   font-family: sans-serif;
   margin: 0;
   padding: 0;

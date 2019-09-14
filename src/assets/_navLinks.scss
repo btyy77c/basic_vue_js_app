@@ -2,12 +2,8 @@
 
 .nav-links {
   background-color: $blue;
-  bottom: -144px;
   display: flex;
   flex-direction: column;
-  left: 0;
-  position: absolute;
-  right: 0;
 
   a {
     color: $white;

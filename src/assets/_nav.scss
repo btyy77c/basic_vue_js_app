@@ -22,6 +22,11 @@
   100% { @include hidden }
 }
 
+.slide-enter,
+.slide-enter-active {
+  animation: slideDown 1s;
+}
+
 nav {
   background-color: $blue;
   display: flex;
@@ -41,6 +46,7 @@ nav {
     position: relative;
     text-align: center;
     width: 60vw;
+    z-index: 20;
 
     &::after {
       background-color: $yellow;
@@ -65,7 +71,12 @@ nav {
   }
 
   .mobile-links {
+    @include visible;
     background-color: $blue;
+    bottom: -144px;
+    left: 0;
+    position: absolute;
+    right: 0;
   }
 
   @media (min-width: 700px) {

@@ -26,6 +26,16 @@ describe("Nav.vue", () => {
   });
 
   it("updates displayLinks for method updateDisplayLink", () => {
+    const wrapper = mount(Nav, { stubs: ['router-link'] })
+    wrapper.setData({ displayLinks: true })
+    expect(wrapper.vm.$data.displayLinks).toBe(true)
 
+    // Changes true to false
+    wrapper.vm.updateDisplayLink()
+    expect(wrapper.vm.$data.displayLinks).toBe(false)
+
+    // Changes false to true
+    wrapper.vm.updateDisplayLink()
+    expect(wrapper.vm.$data.displayLinks).toBe(true)
   });
 });

@@ -3,7 +3,7 @@
     <h3>Donate Now</h3>
 
     <PaymentPassed v-if="completedPayment" />
-    <PaymentForm :stripe="stripe" @fake-token="fakeStripeToken" v-else />
+    <PaymentForm :elements="elements" @fake-token="fakeStripeToken" v-else />
   </section>
 </template>
 
@@ -38,6 +38,7 @@ export default {
   created() {
     // eslint-disable-next-line
     this.stripe = Stripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+    this.elements = this.stripe.elements();
   },
 
   data() {

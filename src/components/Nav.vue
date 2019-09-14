@@ -7,22 +7,38 @@
     </div>
 
     <i
-      @click="displayLinks = !displayLinks"
+      @click="updateDisplayLink"
       class="material-icons icon-image-preview menu"
     >
       menu
     </i>
 
-    <div :class="[displayLinks ? 'display' : 'hidden', 'links']">
-      <router-link to="/" @click.native="displayLinks = false">
+    <transition name="slide">
+      <div class="mobile-links" v-if="displayLinks">
+        <router-link to="/" @click.native="resetdisplayLinks">
+          Donate
+        </router-link>
+
+        <router-link to="/faq" @click.native="resetdisplayLinks">
+          FAQ
+        </router-link>
+
+        <router-link to="/contact" @click.native="resetdisplayLinks">
+          Contact
+        </router-link>
+      </div>
+    </transition>
+
+    <div class="desktop-links">
+      <router-link to="/">
         Donate
       </router-link>
 
-      <router-link to="/faq" @click.native="displayLinks = false">
+      <router-link to="/faq">
         FAQ
       </router-link>
 
-      <router-link to="/contact" @click.native="displayLinks = false">
+      <router-link to="/contact">
         Contact
       </router-link>
     </div>
@@ -41,6 +57,15 @@ export default {
     return {
       displayLinks: false
     };
+  },
+  methods: {
+    resetdisplayLinks() {
+      this.displayLinks = false;
+    },
+
+    updateDisplayLink() {
+      this.displayLinks = !this.displayLinks;
+    }
   }
 };
 </script>

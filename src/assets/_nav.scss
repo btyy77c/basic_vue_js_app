@@ -40,24 +40,8 @@ nav {
     }
   }
 
-  .links {
-    background-color: $blue;
-    bottom: -144px;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    position: absolute;
-    right: 0;
-
-    &.hidden {
-      @include hidden;
-      animation: slideUp 1s;
-    }
-
-    &.display {
-      @include visible;
-      animation: slideDown 1s;
-    }
+  .desktop-links {
+    display: none;
   }
 
   .logo {
@@ -69,8 +53,7 @@ nav {
     padding: 20px 15px;
     position: relative;
     text-align: center;
-    width: 70vw;
-    z-index: 20;
+    width: 60vw;
 
     &::after {
       background-color: $yellow;
@@ -92,7 +75,16 @@ nav {
     font-size: 2em;
     justify-content: flex-end;
     margin: 15px;
-    z-index: 20;
+  }
+
+  .mobile-links {
+    background-color: $blue;
+    bottom: -144px;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    position: absolute;
+    right: 0;
   }
 
   .router-link-exact-active {

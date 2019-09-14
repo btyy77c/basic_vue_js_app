@@ -8,15 +8,21 @@ describe("Nav.vue", () => {
   })
 
   it("starts with displayLinks value of false", () => {
-    //const msg = "Contact Us";
-    //const wrapper = shallowMount(Contact, {
-    //  propsData: { msg }
-    //});
-    //expect(wrapper.text()).toContain(msg);
+    expect(Nav.data().displayLinks).toBe(false)
   });
 
   it("sets displayLinks to false for method resetdisplayLinks", () => {
+    const wrapper = mount(Nav, { stubs: ['router-link'] })
+    wrapper.setData({ displayLinks: true })
+    expect(wrapper.vm.$data.displayLinks).toBe(true)
 
+    // Changes true to false
+    wrapper.vm.resetdisplayLinks()
+    expect(wrapper.vm.$data.displayLinks).toBe(false)
+
+    // Does not change false
+    wrapper.vm.resetdisplayLinks()
+    expect(wrapper.vm.$data.displayLinks).toBe(false)
   });
 
   it("updates displayLinks for method updateDisplayLink", () => {

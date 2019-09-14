@@ -6,10 +6,11 @@
   flex-direction: column;
 
   a {
+    border: 3px solid transparent;
     color: $white;
     padding: 15px;
+    position: relative;
     text-decoration: none;
-    border-right: 1px solid transparent;
 
     &:hover {
       background-color: darken($blue, 1%);
@@ -17,7 +18,7 @@
 
     &:focus {
       outline: 0;
-      border-right: 1px solid $yellow;
+      border-left: 3px solid $yellow;
     }
   }
 
@@ -37,6 +38,11 @@
       display: flex;
       height: 100%;
       padding: 0 15px;
+
+      &:focus {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+      }
     }
   }
 }

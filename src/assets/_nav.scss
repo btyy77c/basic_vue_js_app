@@ -67,13 +67,20 @@ nav {
 
   .menu {
     align-items: center;
+    border: 1px solid transparent;
     cursor: pointer;
     display: flex;
     flex-grow: 1;
     font-size: 2em;
     justify-content: flex-end;
-    margin: 15px;
+    margin: 10px 15px 10px 27%;
     z-index: 20;
+
+    &:focus {
+      border-bottom: 1px solid $yellow;
+      border-top: 1px solid $yellow;
+      outline: 0;
+    }
   }
 
   .mobile-links {

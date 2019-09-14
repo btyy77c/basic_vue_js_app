@@ -9,9 +9,15 @@
     color: $white;
     padding: 15px;
     text-decoration: none;
+    border-right: 1px solid transparent;
 
     &:hover {
       background-color: darken($blue, 1%);
+    }
+
+    &:focus {
+      outline: 0;
+      border-right: 1px solid $yellow;
     }
   }
 

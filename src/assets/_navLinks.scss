@@ -1,0 +1,36 @@
+@import './colors';
+
+.nav-links {
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: $white;
+    padding: 15px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken($blue, 1%);
+    }
+  }
+
+  .router-link-exact-active {
+    color: $yellow;
+  }
+
+  @media (min-width: 700px) {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    position: initial;
+
+    a {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      padding: 0 15px;
+    }
+  }
+}

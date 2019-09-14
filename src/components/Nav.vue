@@ -2,37 +2,68 @@
   <nav id="nav">
     <div class="logo">
       <span>Hurricane Dorian</span>
+      <i class="material-icons icon-image-preview">favorite_border</i>
       <span>Relief</span>
     </div>
 
-    <div class="links">
-      <router-link to="/">Donate</router-link>
-      <router-link to="/faq">FAQ</router-link>
-      <router-link to="/contact">Contact</router-link>
+    <i
+      @click="updateDisplayLink"
+      @keyup.enter="updateDisplayLink"
+      aria-atomic="true"
+      aria-live="polite"
+      class="material-icons icon-image-preview menu"
+      role="button"
+      tabindex="0"
+    >
+      menu
+    </i>
+
+    <transition name="slide">
+      <div class="mobile-links" v-if="displayLinks">
+        <NavLinks @linkClick="resetdisplayLinks" />
+      </div>
+    </transition>
+
+    <div class="desktop-links">
+      <NavLinks />
     </div>
   </nav>
 </template>
 
 <style scoped lang="scss">
-nav {
-  background-color: #00788c;
-  color: #fff;
-  display: flex;
-}
-
-.links {
-  align-items: center;
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-}
-
-.logo {
-  align-items: center;
-  background-color: #ffc827;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 15px;
-}
+@import "../assets/nav";
 </style>
+
+<script>
+import NavLinks from "@/components/NavLinks.vue";
+
+export default {
+  name: "nav-site",
+
+  components: {
+    NavLinks
+  },
+
+  created() {
+    window.addEventListener("resize", () => {
+      this.resetdisplayLinks();
+    });
+  },
+
+  data() {
+    return {
+      displayLinks: false
+    };
+  },
+
+  methods: {
+    resetdisplayLinks() {
+      this.displayLinks = false;
+    },
+
+    updateDisplayLink() {
+      this.displayLinks = !this.displayLinks;
+    }
+  }
+};
+</script>

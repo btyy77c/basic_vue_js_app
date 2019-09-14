@@ -1,0 +1,110 @@
+@import './colors';
+
+@mixin hidden {
+  opacity: 0;
+  transform: translateY(-200%);
+  z-index: -5;
+}
+
+@mixin visible {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 10;
+}
+
+@keyframes slideDown {
+  0% { @include hidden }
+  100% { @include visible }
+}
+
+@keyframes slideUp {
+  0% { @include visible }
+  100% { @include hidden }
+}
+
+.slide-enter,
+.slide-enter-active {
+  animation: slideDown 1s;
+}
+
+.slide-leave-active,
+.slide-leave-to {
+  animation: slideUp 1s;
+}
+
+nav {
+  background-color: $blue;
+  display: flex;
+  position: relative;
+
+  .desktop-links {
+    display: none;
+  }
+
+  .logo {
+    align-items: center;
+    background-color: $yellow;
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    position: relative;
+    text-align: center;
+    width: 60vw;
+    z-index: 20;
+
+    &::after {
+      background-color: $yellow;
+      clip-path: polygon(0 0, 0% 100%, 100% 50%);
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: -29px;
+      top: 0;
+      width: 30px;
+    }
+  }
+
+  .menu {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    font-size: 2em;
+    justify-content: flex-end;
+    margin: 15px;
+    z-index: 20;
+  }
+
+  .mobile-links {
+    @include visible;
+    background-color: $blue;
+    bottom: -144px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  @media (min-width: 700px) {
+    .desktop-links {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+
+    .logo {
+      width: 25%;
+    }
+
+    .menu {
+      display: none;
+      z-index: -10;
+    }
+
+    .mobile-links {
+      display: none;
+    }
+  }
+}

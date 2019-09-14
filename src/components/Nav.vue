@@ -34,8 +34,15 @@ import NavLinks from "@/components/NavLinks.vue";
 
 export default {
   name: "nav",
+
   components: {
     NavLinks
+  },
+
+  created() {
+    window.addEventListener("resize", () => {
+      this.resetdisplayLinks();
+    });
   },
 
   data() {

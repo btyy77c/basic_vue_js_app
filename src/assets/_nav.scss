@@ -27,6 +27,11 @@
   animation: slideDown 1s;
 }
 
+.slide-leave-active,
+.slide-leave-to {
+  animation: slideUp 1s;
+}
+
 nav {
   background-color: $blue;
   display: flex;
@@ -68,6 +73,7 @@ nav {
     font-size: 2em;
     justify-content: flex-end;
     margin: 15px;
+    z-index: 20;
   }
 
   .mobile-links {
@@ -94,6 +100,7 @@ nav {
 
     .menu {
       display: none;
+      z-index: -10;
     }
 
     .mobile-links {

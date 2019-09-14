@@ -15,7 +15,12 @@ nav {
       position: initial;
 
       &.hidden {
-        display: flex;
+        @include visible;
+        animation: none;
+      }
+
+      &.display {
+        animation: none;
       }
     }
 

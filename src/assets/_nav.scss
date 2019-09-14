@@ -3,6 +3,28 @@ $blue: #00788c;
 $yellow: #ffc827;
 $white: #fff;
 
+@mixin hidden {
+  opacity: 0;
+  transform: translateY(-200%);
+  z-index: -5;
+}
+
+@mixin visible {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 10;
+}
+
+@keyframes slideDown {
+  0% { @include hidden }
+  100% { @include visible }
+}
+
+@keyframes slideUp {
+  0% { @include visible }
+  100% { @include hidden }
+}
+
 nav {
   background-color: $blue;
   display: flex;
@@ -28,7 +50,13 @@ nav {
     right: 0;
 
     &.hidden {
-      display: none;
+      @include hidden;
+      animation: slideUp 1s;
+    }
+
+    &.display {
+      @include visible;
+      animation: slideDown 1s;
     }
   }
 
@@ -42,6 +70,7 @@ nav {
     position: relative;
     text-align: center;
     width: 70vw;
+    z-index: 20;
 
     &::after {
       background-color: $yellow;
@@ -63,6 +92,7 @@ nav {
     font-size: 2em;
     justify-content: flex-end;
     margin: 15px;
+    z-index: 20;
   }
 
   .router-link-exact-active {

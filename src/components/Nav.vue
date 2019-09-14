@@ -15,49 +15,35 @@
 
     <transition name="slide">
       <div class="mobile-links" v-if="displayLinks">
-        <router-link to="/" @click.native="resetdisplayLinks">
-          Donate
-        </router-link>
-
-        <router-link to="/faq" @click.native="resetdisplayLinks">
-          FAQ
-        </router-link>
-
-        <router-link to="/contact" @click.native="resetdisplayLinks">
-          Contact
-        </router-link>
+        <NavLinks @linkClick="resetdisplayLinks" />
       </div>
     </transition>
 
     <div class="desktop-links">
-      <router-link to="/">
-        Donate
-      </router-link>
-
-      <router-link to="/faq">
-        FAQ
-      </router-link>
-
-      <router-link to="/contact">
-        Contact
-      </router-link>
+      <NavLinks />
     </div>
   </nav>
 </template>
 
 <style scoped lang="scss">
 @import "../assets/nav";
-@import "../assets/nav_desktop";
 </style>
 
 <script>
+import NavLinks from "@/components/NavLinks.vue";
+
 export default {
   name: "nav",
+  components: {
+    NavLinks
+  },
+
   data() {
     return {
       displayLinks: false
     };
   },
+
   methods: {
     resetdisplayLinks() {
       this.displayLinks = false;

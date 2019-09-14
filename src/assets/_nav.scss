@@ -1,7 +1,4 @@
-$black: #000;
-$blue: #00788c;
-$yellow: #ffc827;
-$white: #fff;
+@import './colors';
 
 @mixin hidden {
   opacity: 0;
@@ -30,16 +27,6 @@ nav {
   display: flex;
   position: relative;
 
-  a {
-    color: $white;
-    padding: 15px;
-    text-decoration: none;
-
-    &:hover {
-      background-color: darken($blue, 1%);
-    }
-  }
-
   .desktop-links {
     display: none;
   }
@@ -58,7 +45,7 @@ nav {
     &::after {
       background-color: $yellow;
       clip-path: polygon(0 0, 0% 100%, 100% 50%);
-      content: '';
+      content: "";
       height: 100%;
       position: absolute;
       right: -29px;
@@ -79,15 +66,27 @@ nav {
 
   .mobile-links {
     background-color: $blue;
-    bottom: -144px;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    position: absolute;
-    right: 0;
   }
 
-  .router-link-exact-active {
-    color: $yellow;
+  @media (min-width: 700px) {
+    .desktop-links {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+
+    .logo {
+      width: 25%;
+    }
+
+    .menu {
+      display: none;
+    }
+
+    .mobile-links {
+      display: none;
+    }
   }
 }

@@ -8,7 +8,12 @@
 
     <i
       @click="updateDisplayLink"
+      @keyup.enter="updateDisplayLink"
+      aria-atomic="true"
+      aria-live="polite"
       class="material-icons icon-image-preview menu"
+      role="button"
+      tabindex="0"
     >
       menu
     </i>

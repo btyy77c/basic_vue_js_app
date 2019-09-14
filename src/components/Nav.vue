@@ -33,7 +33,7 @@
 import NavLinks from "@/components/NavLinks.vue";
 
 export default {
-  name: "nav",
+  name: "nav-site",
 
   components: {
     NavLinks

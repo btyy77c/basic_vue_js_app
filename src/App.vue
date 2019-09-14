@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <Nav />
+  <main id="app">
+    <NavSite />
     <router-view />
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
@@ -17,12 +17,12 @@ body {
 
 <script>
 // @ is an alias to /src
-import Nav from "@/components/Nav.vue";
+import NavSite from "@/components/Nav.vue";
 
 export default {
-  name: "main",
+  name: "app",
   components: {
-    Nav
+    NavSite
   }
 };
 </script>

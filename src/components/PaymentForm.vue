@@ -4,7 +4,8 @@
       v-model="amount"
       @input="filterAmount"
       @change="filterAmount"
-      @keyup.enter="filterAmount"
+      @keydown="filterAmount"
+      @keyup="filterAmount"
       placeholder="Enter amount to donate"
     />
 
@@ -67,7 +68,9 @@ export default {
     },
 
     filterAmount() {
-      this.amount = this.amount.replace(/[^0-9]/g, "");
+      if (this.amount) {
+        this.amount = this.amount.replace(/[^0-9]/g, "");
+      }
     }
   },
 

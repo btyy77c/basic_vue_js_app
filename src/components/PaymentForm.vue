@@ -1,6 +1,10 @@
 <template>
   <div id="fake-stripe-form">
-    <input v-model="amount" placeholder="Enter amount to donate" />
+    <input
+      v-model="amount"
+      placeholder="Enter amount to donate"
+      type="tel"
+    />
 
     <div id="card-element" />
 

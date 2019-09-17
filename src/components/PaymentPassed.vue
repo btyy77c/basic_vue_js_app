@@ -10,6 +10,14 @@
   </div>
 </template>
 
+<style scoped lang="scss">
+@import "../assets/payment";
+
+#payment-passed {
+  @include white-container;
+}
+</style>
+
 <script>
 export default {
   name: "payment-passed",

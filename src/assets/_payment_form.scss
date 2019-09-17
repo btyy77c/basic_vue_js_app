@@ -1,0 +1,33 @@
+@import "./payment";
+
+input {
+  border: 1px solid $blue;
+  color: #32325d;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 10px 15px;
+  width: 95%;
+
+  &:focus {
+    outline: 1px solid $blue;
+  }
+
+  &::placeholder {
+    color: #aab7c4;
+  }
+}
+
+#card-element {
+  border: 1px solid $blue;
+  padding: 10px 15px;
+}
+
+#card-errors {
+  color: #eb1d26;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+#fake-stripe-form {
+  @include white-container;
+}

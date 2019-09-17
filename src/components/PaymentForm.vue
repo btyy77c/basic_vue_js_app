@@ -1,14 +1,6 @@
 <template>
   <div id="fake-stripe-form">
-    <input
-      v-model="amount"
-      @input="filterAmount"
-      @change="filterAmount"
-      @keydown="filterAmount"
-      @keyup="filterAmount"
-      placeholder="Enter amount to donate"
-      type="tel"
-    />
+    <input v-model="amount" placeholder="Enter amount to donate" />
 
     <div id="card-element" />
 
@@ -66,12 +58,6 @@ export default {
       } else {
         this.$emit("fake-token", this.card, this.amount);
       }
-    },
-
-    filterAmount() {
-      if (this.amount) {
-        this.amount = this.amount.replace(/[^0-9]/g, "");
-      }
     }
   },
 
@@ -89,6 +75,12 @@ export default {
 
   props: {
     elements: null
+  },
+
+  watch: {
+    amount() {
+      this.amount = String(this.amount).replace(/[^\d]/g, "");
+    }
   }
 };
 </script>

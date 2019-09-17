@@ -2,8 +2,9 @@
   <div id="fake-stripe-form">
     <input
       v-model="amount"
+      aria-label="Enter amount to donate"
       placeholder="Enter amount to donate"
-      type="tel"
+      inputmode="numeric"
     />
 
     <div id="card-element" />

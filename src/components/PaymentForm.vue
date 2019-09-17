@@ -7,6 +7,7 @@
       @keydown="filterAmount"
       @keyup="filterAmount"
       placeholder="Enter amount to donate"
+      type="tel"
     />
 
     <div id="card-element" />

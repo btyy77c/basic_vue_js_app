@@ -3,6 +3,8 @@
     <input
       v-model="amount"
       @input="filterAmount"
+      @change="filterAmount"
+      @keyup.enter="filterAmount"
       placeholder="Enter amount to donate"
     />
 

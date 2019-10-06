@@ -59,6 +59,6 @@ section {
   margin: 10px auto 30px;
   max-width: 800px;
   padding: 10px 15px 20px;
-  width: 90vw;
+  width: 80vw;
 }
 </style>

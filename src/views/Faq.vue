@@ -6,7 +6,7 @@
       <h3>Who are we?</h3>
 
       <p>
-        This site was created a part of a Project Management class at
+        This site was created as part of a Project Management class at
         <a href="https://www.ncat.edu/" target="_blank" rel="noopener">
           NC A&T
         </a>

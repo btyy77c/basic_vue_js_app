@@ -43,6 +43,9 @@ describe("PaymentForm.vue", () => {
     wrapper.setData({ amount: -1 });
     expect(wrapper.vm.$data.amount).toEqual("1");
 
+    wrapper.setData({ amount: 1.55 });
+    expect(wrapper.vm.$data.amount).toEqual("155");
+
     wrapper.setData({
       amount: "1,.6jbyqe78697726`976t7`2:(&G%@#!bvyeqf8980`=+)"
     });

@@ -23,9 +23,18 @@ describe("PaymentForm.vue", () => {
   });
 
   test("fakePayment submits card data to parent component", () => {
+    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
+
     // Amount not valid
+    wrapper.setData({ amount: 0, cardErrors: null });
+    wrapper.vm.fakePayment();
+    expect(wrapper.vm.$data.cardErrors).toBe("Amount is invalid");
 
     // Amount valid
+    wrapper.setData({ amount: 5, cardErrors: null });
+    wrapper.vm.fakePayment();
+    expect(wrapper.emitted()).toEqual({ "fake-token": [ [ null, '5' ] ] })
+    expect(wrapper.vm.$data.cardErrors).toEqual(null);
   });
 
   test("amount watcher removes non numbers from amount", () => {

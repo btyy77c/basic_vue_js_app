@@ -5,11 +5,9 @@ describe("PaymentForm.vue", () => {
   test("filterAmount removed non numbers from amount", () => {});
 
   test("is a Vue instance", () => {
-    const wrapper = mount(PaymentForm,
-      {
-        stubs: ["router-link"]
-      }
-    );
+    const wrapper = mount(PaymentForm, {
+      stubs: ["router-link"]
+    });
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
 

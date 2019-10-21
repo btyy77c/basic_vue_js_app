@@ -38,6 +38,13 @@ describe("PaymentForm.vue", () => {
   });
 
   test("amount watcher removes non numbers from amount", () => {
+    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
 
+    wrapper.setData({ amount: -1 });
+    expect(wrapper.vm.$data.amount).toEqual("1");
+
+
+    wrapper.setData({ amount: "1,.6jbyqe78697726`976t7`2:(&G%@#!bvyeqf8980`=+)" });
+    expect(wrapper.vm.$data.amount).toEqual("1678697726976728980");
   });
 });

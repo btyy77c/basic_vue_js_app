@@ -1,15 +1,15 @@
 import { mount } from "@vue/test-utils";
 import PaymentForm from "@/components/PaymentForm.vue";
 
+const wrapper = mount(PaymentForm);
+
 describe("PaymentForm.vue", () => {
   test("is a Vue instance", () => {
-    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
 
   test("validAmount checks for positive integers", () => {
     // Positive integer
-    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
     wrapper.setData({ amount: 10 });
     expect(wrapper.vm.validAmount).toBe(true);
 
@@ -23,8 +23,6 @@ describe("PaymentForm.vue", () => {
   });
 
   test("fakePayment submits card data to parent component", () => {
-    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
-
     // Amount not valid
     wrapper.setData({ amount: 0, cardErrors: null });
     wrapper.vm.fakePayment();
@@ -38,8 +36,6 @@ describe("PaymentForm.vue", () => {
   });
 
   test("amount watcher removes non numbers from amount", () => {
-    const wrapper = mount(PaymentForm, { stubs: ["router-link"] });
-
     wrapper.setData({ amount: -1 });
     expect(wrapper.vm.$data.amount).toEqual("1");
 

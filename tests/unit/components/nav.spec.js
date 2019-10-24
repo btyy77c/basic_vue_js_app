@@ -1,9 +1,10 @@
 import { mount } from "@vue/test-utils";
 import Nav from "@/components/Nav.vue";
 
+const wrapper = mount(Nav, { stubs: ["router-link"] });
+
 describe("Nav.vue", () => {
   test("is a Vue instance", () => {
-    const wrapper = mount(Nav, { stubs: ["router-link"] });
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
 
@@ -12,7 +13,6 @@ describe("Nav.vue", () => {
   });
 
   it("sets displayLinks to false for method resetdisplayLinks", () => {
-    const wrapper = mount(Nav, { stubs: ["router-link"] });
     wrapper.setData({ displayLinks: true });
     expect(wrapper.vm.$data.displayLinks).toBe(true);
 
@@ -26,7 +26,6 @@ describe("Nav.vue", () => {
   });
 
   it("updates displayLinks for method updateDisplayLink", () => {
-    const wrapper = mount(Nav, { stubs: ["router-link"] });
     wrapper.setData({ displayLinks: true });
     expect(wrapper.vm.$data.displayLinks).toBe(true);
 

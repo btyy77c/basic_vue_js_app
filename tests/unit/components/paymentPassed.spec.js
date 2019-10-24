@@ -17,5 +17,11 @@ describe("PaymentPassed.vue", () => {
 
   test("updatePaymentStatus changes store to accepting new donations", () => {
     const wrapper = mount(PaymentPassed, { store });
+
+    wrapper.vm.$store.commit("changeDonationStatus", "testing");
+    expect(wrapper.vm.$store.state.donationStatus).toEqual("testing");
+
+    wrapper.vm.updatePaymentStatus();
+    expect(wrapper.vm.$store.state.donationStatus).toEqual("accepting");
   });
 });

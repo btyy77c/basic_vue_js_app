@@ -12,20 +12,7 @@ describe("Nav.vue", () => {
     expect(Nav.data().displayLinks).toBe(false);
   });
 
-  it("sets displayLinks to false for method resetdisplayLinks", () => {
-    wrapper.setData({ displayLinks: true });
-    expect(wrapper.vm.$data.displayLinks).toBe(true);
-
-    // Changes true to false
-    wrapper.vm.resetdisplayLinks();
-    expect(wrapper.vm.$data.displayLinks).toBe(false);
-
-    // Does not change false
-    wrapper.vm.resetdisplayLinks();
-    expect(wrapper.vm.$data.displayLinks).toBe(false);
-  });
-
-  it("updates displayLinks for method updateDisplayLink", () => {
+  it("updateDisplayLink", () => {
     wrapper.setData({ displayLinks: true });
     expect(wrapper.vm.$data.displayLinks).toBe(true);
 
@@ -36,5 +23,18 @@ describe("Nav.vue", () => {
     // Changes false to true
     wrapper.vm.updateDisplayLink();
     expect(wrapper.vm.$data.displayLinks).toBe(true);
+  });
+
+  it("resetdisplayLinks", () => {
+    wrapper.setData({ displayLinks: true });
+    expect(wrapper.vm.$data.displayLinks).toBe(true);
+
+    // Changes true to false
+    wrapper.vm.resetdisplayLinks();
+    expect(wrapper.vm.$data.displayLinks).toBe(false);
+
+    // Does not change false
+    wrapper.vm.resetdisplayLinks();
+    expect(wrapper.vm.$data.displayLinks).toBe(false);
   });
 });

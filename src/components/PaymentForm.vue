@@ -28,7 +28,9 @@ export default {
   name: "fake-payment-form",
 
   beforeDestroy() {
-    this.card.destroy();
+    if (this.card) {
+      this.card.destroy();
+    }
   },
 
   computed: {
@@ -63,19 +65,25 @@ export default {
       } else {
         this.$emit("fake-token", this.card, this.amount);
       }
+    },
+
+    loadFakeStripeForm() {
+      this.card = this.elements.create("card", { style: this.cardStyles });
+      this.card.mount("#card-element");
+      this.card.addEventListener("change", stripeEvent => {
+        if (stripeEvent.error) {
+          this.cardErrors = stripeEvent.error.message;
+        } else {
+          this.cardErrors = null;
+        }
+      });
     }
   },
 
   mounted() {
-    this.card = this.elements.create("card", { style: this.cardStyles });
-    this.card.mount("#card-element");
-    this.card.addEventListener("change", stripeEvent => {
-      if (stripeEvent.error) {
-        this.cardErrors = stripeEvent.error.message;
-      } else {
-        this.cardErrors = null;
-      }
-    });
+    if (this.elements) {
+      this.loadFakeStripeForm();
+    }
   },
 
   props: {

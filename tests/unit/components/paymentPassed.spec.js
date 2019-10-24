@@ -1,13 +1,12 @@
 import { mount } from "@vue/test-utils";
-import Vuex from "vuex";
 import PaymentPassed from "@/components/PaymentPassed.vue";
 import Store from "@/store.js";
 
 describe("PaymentPassed.vue", () => {
-  let store
+  let store;
 
   beforeEach(() => {
-    store = Store
+    store = Store;
   });
 
   test("is a Vue instance", () => {

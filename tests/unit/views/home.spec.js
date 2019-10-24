@@ -21,4 +21,22 @@ describe("PaymentPassed.vue", () => {
     const wrapper = mount(Home, { store });
     expect(wrapper.isVueInstance()).toBeTruthy();
   });
+
+  test("completedPayment", () => {
+    const wrapper = mount(Home, { store });
+
+    // returns false when donationStatus is not completed
+    wrapper.vm.$store.commit("changeDonationStatus", "testing");
+    expect(wrapper.vm.completedPayment).toEqual(false);
+
+    // completedPayment returns true when donationStatus is completed
+    wrapper.vm.$store.commit("changeDonationStatus", "completed");
+    expect(wrapper.vm.completedPayment).toEqual(true);
+  });
+
+  test("fakeStripeToken", () => {
+    // does nothing if processingCard is true
+
+    // updates store values if processingCard is false
+  });
 });

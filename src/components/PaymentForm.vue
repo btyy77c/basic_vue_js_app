@@ -28,7 +28,9 @@ export default {
   name: "fake-payment-form",
 
   beforeDestroy() {
-    this.card.destroy();
+    if (this.card) {
+      this.card.destroy();
+    }
   },
 
   computed: {

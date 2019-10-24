@@ -6,13 +6,13 @@ const Stripe = jest.fn(() => {
   return {
     elements: jest.fn(),
 
-    createToken: jest.fn(card => {
+    createToken: jest.fn(() => {
       return new Promise((resolve, reject) => {
-        resolve({})
-        reject({})
-      })
+        resolve({});
+        reject({});
+      });
     })
-  }
+  };
 });
 
 let store;
@@ -44,7 +44,7 @@ describe("PaymentPassed.vue", () => {
     wrapper.vm.$store.commit("changeDonationStatus", "testing");
     expect(wrapper.vm.$store.state.donationStatus).toEqual("testing");
 
-    wrapper.vm.$store.commit("changeLastDonatedAmount", 2)
+    wrapper.vm.$store.commit("changeLastDonatedAmount", 2);
     expect(wrapper.vm.$store.state.lastDonatedAmount).toEqual(2);
 
     // does nothing if processingCard is true
@@ -57,7 +57,7 @@ describe("PaymentPassed.vue", () => {
     // updates store values if processingCard is false
     wrapper.setData({ processingCard: false });
 
-    await wrapper.vm.fakeStripeToken({}, 10)
+    await wrapper.vm.fakeStripeToken({}, 10);
     expect(wrapper.vm.$store.state.donationStatus).toEqual("completed");
     expect(wrapper.vm.$store.state.lastDonatedAmount).toEqual(10);
   });

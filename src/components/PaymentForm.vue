@@ -20,7 +20,7 @@
 </template>
 
 <style scoped lang="scss">
-@import "../assets/payment_form";
+@import "../assets/form_fields";
 </style>
 
 <script>

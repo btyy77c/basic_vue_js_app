@@ -1,6 +1,7 @@
 @import "./payment";
 
-input {
+input,
+textarea {
   border: 1px solid $blue;
   color: #32325d;
   font-size: 16px;

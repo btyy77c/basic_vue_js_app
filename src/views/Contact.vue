@@ -21,6 +21,7 @@
 
       <textarea
         @keyup="closeMessage"
+        aria-label="Enter your question"
         cols="50"
         placeholder="Questions"
         rows="4"
@@ -31,8 +32,8 @@
         Submit Your Question
       </button>
 
-      <p @click="closeMessage" class="submitted" v-if="submitted">
-        Thank you! Your question has been sent to our team.
+      <p class="submitted" v-if="submittedTextAvailable">
+        {{ submittedText }}
       </p>
     </div>
   </section>
@@ -69,25 +70,37 @@ section {
 export default {
   name: "contact",
 
+  computed: {
+    submittedTextAvailable() {
+      return this.submittedText != null;
+    }
+  },
+
   data() {
     return {
       content: null,
       email: null,
       name: null,
-      submitted: false
+      submittedText: null
     };
   },
 
   methods: {
     closeMessage() {
-      this.submitted = false;
+      this.submittedText = null;
     },
 
     fakeSubmission() {
-      this.content = null;
-      this.email = null;
-      this.name = null;
-      this.submitted = true;
+      if (this.email && this.content) {
+        this.content = null;
+        this.email = null;
+        this.name = null;
+        this.submittedText =
+          "Thank you! Your question has been sent to our team.";
+      } else {
+        this.submittedText =
+          "Please make sure you have entered an email and a question.";
+      }
     }
   }
 };

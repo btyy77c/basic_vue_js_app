@@ -4,19 +4,36 @@
 
     <div class="box">
       <input
-        v-model="name"
+        @keyup="closeMessage"
         aria-label="Name"
-        placeholder="Name"
         inputmode="text"
+        placeholder="Name"
+        v-model="name"
       />
 
-      <input aria-label="Email" placeholder="Email" inputmode="text" />
+      <input
+        @keyup="closeMessage"
+        aria-label="Email"
+        inputmode="text"
+        placeholder="Email"
+        v-model="email"
+      />
 
-      <textarea rows="4" cols="50" placeholder="Questions"></textarea>
+      <textarea
+        @keyup="closeMessage"
+        cols="50"
+        placeholder="Questions"
+        rows="4"
+        v-model="content"
+      ></textarea>
 
       <button @keyup.enter="fakeSubmission" @click="fakeSubmission">
         Submit Your Question
       </button>
+
+      <p @click="closeMessage" class="submitted" v-if="submitted">
+        Thank you! Your question has been sent to our team.
+      </p>
     </div>
   </section>
 </template>
@@ -35,7 +52,16 @@ section {
   margin: 10px auto 30px;
   max-width: 800px;
   padding: 10px 15px 20px;
+  text-align: left;
   width: 80vw;
+}
+
+.submitted {
+  align-items: flex-start;
+  color: $blue;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.7em;
 }
 </style>
 
@@ -45,12 +71,24 @@ export default {
 
   data() {
     return {
-      name: null
+      content: null,
+      email: null,
+      name: null,
+      submitted: false
     };
   },
 
   methods: {
-    fakeSubmission() {}
+    closeMessage() {
+      this.submitted = false;
+    },
+
+    fakeSubmission() {
+      this.content = null;
+      this.email = null;
+      this.name = null;
+      this.submitted = true;
+    }
   }
 };
 </script>
